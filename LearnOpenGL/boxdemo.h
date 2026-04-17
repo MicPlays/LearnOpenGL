@@ -13,7 +13,6 @@ class BoxDemo
 {
 	public:
 		BoxDemo(ResourceManager rm);
-		void initBoxes();
 		void drawBoxes(Camera camera);
 		unsigned int VAO, VBO;
 		float mixAmount = 0.2f;

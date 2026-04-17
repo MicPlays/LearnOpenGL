@@ -22,11 +22,14 @@
     <ClCompile Include="..\..\..\..\Downloads\glad\src\glad.c" />
     <ClCompile Include="boxdemo.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="colordemo.cpp" />
+    <ClCompile Include="cube.cpp" />
     <ClCompile Include="font.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="model.cpp" />
     <ClCompile Include="modelrenderer.cpp" />
     <ClCompile Include="resourcemanager.cpp" />
+    <ClCompile Include="texcube.cpp" />
     <ClCompile Include="textrenderer.cpp" />
     <ClCompile Include="texture2d.cpp" />
     <ClCompile Include="window.cpp" />
@@ -37,17 +40,23 @@
   <ItemGroup>
     <ClInclude Include="boxdemo.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="colordemo.h" />
+    <ClInclude Include="cube.h" />
     <ClInclude Include="font.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="modelrenderer.h" />
     <ClInclude Include="resourcemanager.h" />
+    <ClInclude Include="texcube.h" />
     <ClInclude Include="textrenderer.h" />
     <ClInclude Include="texture2d.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="colorshader.fs" />
+    <None Include="colorshader.vs" />
+    <None Include="lightshader.fs" />
     <None Include="shader.fs" />
     <None Include="shader.vs" />
     <None Include="textshader.fs" />

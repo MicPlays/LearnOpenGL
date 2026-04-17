@@ -50,6 +50,12 @@ void Mesh::Draw(Shader* shader)
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
 	shader->use();
+
+	glm::mat4 mod = glm::mat4(1.0f);
+	mod = glm::translate(mod, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+	mod = glm::scale(mod, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+	shader->setMat4("model", mod);
+
 	for (unsigned int i = 0; i < textures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);

@@ -63,6 +63,15 @@
     <ClCompile Include="model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="colordemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texcube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">
@@ -98,6 +107,15 @@
     <ClInclude Include="model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="colordemo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texcube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader.vs">
@@ -110,6 +128,15 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="textshader.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="colorshader.vs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="colorshader.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="lightshader.fs">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

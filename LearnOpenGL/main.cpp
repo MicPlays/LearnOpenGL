@@ -18,6 +18,7 @@
 #include "boxdemo.h"
 #include "model.h"
 #include "mesh.h"
+#include "colordemo.h"
 
 
 GLenum glCheckError_(const char* file, int line)
@@ -52,7 +53,10 @@ int main() {
 
 	//BoxDemo demo = BoxDemo(rm);
 
-	Model* model = new Model("models/jugg/scene.gltf", "jugg", &rm);
+	ColorDemo cDemo = ColorDemo("colorshader.vs", "lightshader.fs", &rm);
+	Shader* cubeShader = rm.load_shader("colorshader.vs", "colorshader.fs", "colorshader");
+
+	//Model* model = new Model("models/jugg/scene.gltf", "jugg", &rm);
 
 	//shader for rendering text
 	Shader* textShader;
@@ -75,7 +79,7 @@ int main() {
 		window.processInput();
 
 		//clear color buffer with color specified by glClearColor()
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//demo.drawBoxes(camera);
@@ -85,12 +89,9 @@ int main() {
 		ourShader->setMat4("proj", projection);
 		ourShader->setMat4("view", view);
 
-		glm::mat4 mod = glm::mat4(1.0f);
-		mod = glm::translate(mod, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-		mod = glm::scale(mod, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-		ourShader->setMat4("model", mod);
+		cDemo.Draw(cubeShader, projection, view);
 
-		model->Draw(ourShader);
+		//model->Draw(ourShader);
 		glCheckError();
 		//tr.RenderText(textShader, "Hello", 25.0f, 25.0f, 1.0f, glm::vec3(0.5f, 0.8f, 0.2f));
 
@@ -102,7 +103,7 @@ int main() {
 
 	//glfw cleanup
 	delete tr.activeFont;
-	delete model;
+	//delete model;
 	//delete demo.tex1;
 	//delete demo.tex2;
 	glfwTerminate();

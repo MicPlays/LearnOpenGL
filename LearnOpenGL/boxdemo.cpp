@@ -13,7 +13,6 @@
 
 BoxDemo::BoxDemo(ResourceManager rm)
 {
-	initBoxes();
 	this->ourShader = rm.load_shader("shader.vs", "shader.fs", "ourShader");
 	//create textures
 	tex1 = rm.load_texture("container.jpg", false, false, "container");
@@ -62,8 +61,9 @@ void BoxDemo::drawBoxes(Camera camera)
 		model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 		ourShader->setMat4("model", model);
 
+		/*
 		glm::mat4 view;
-		//view = glm::lookAt(camera.cameraPos, camera.cameraPos + camera.cameraFront, camera.cameraUp);
+		view = glm::lookAt(camera.cameraPos, camera.cameraPos + camera.cameraFront, camera.cameraUp);
 		glm::vec3 camRight = glm::normalize(glm::cross(camera.cameraFront, camera.cameraUp));
 		glm::vec3 camUp = glm::normalize(glm::cross(camRight, camera.cameraFront));
 		glm::mat4 rot(1.0f);
@@ -76,80 +76,13 @@ void BoxDemo::drawBoxes(Camera camera)
 		view = rot * trans;
 
 		glm::mat4 proj;
-		proj = glm::perspective(glm::radians(45.0f/*window.currentCamera->fov*/), 800.0f / 600.0f, 0.1f, 100.0f);
+		proj = glm::perspective(glm::radians(45.0fwindow.currentCamera->fov), 800.0f / 600.0f, 0.1f, 100.0f);
 
 		unsigned int viewLoc = glGetUniformLocation(*ourShader->ID, "view");
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		unsigned int projLoc = glGetUniformLocation(*ourShader->ID, "proj");
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
+		*/
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
-}
-
-
-void BoxDemo::initBoxes()
-{
-	float vertices[] = {
-			-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-			 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-			 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-			 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-			-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-			-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-			 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-			 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-			 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-			 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-			 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-			-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	};
-
-	//generate vertex buffer object that stores vertex data on GPU
-	glGenBuffers(1, &VBO);
-
-	glGenVertexArrays(1, &VAO);
-
-	//bind vertex array object (VAO)
-	glBindVertexArray(VAO);
-	//copy vertices into buffer for OpenGL to use
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	//tell OpenGL how to interpret vertex data
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
-
-	
 }
