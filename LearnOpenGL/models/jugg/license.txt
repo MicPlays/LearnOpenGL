@@ -1,0 +1,11 @@
+Model Information:
+* title:	Old Juggernog - Call of Duty Perk Machine
+* source:	https://sketchfab.com/3d-models/old-juggernog-call-of-duty-perk-machine-0d8abe67a62a4823a0b418a1fb395502
+* author:	Jamie McFarlane (https://sketchfab.com/jamiemcfarlane)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Old Juggernog - Call of Duty Perk Machine" (https://sketchfab.com/3d-models/old-juggernog-call-of-duty-perk-machine-0d8abe67a62a4823a0b418a1fb395502) by Jamie McFarlane (https://sketchfab.com/jamiemcfarlane) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
